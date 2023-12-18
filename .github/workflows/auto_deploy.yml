@@ -23,6 +23,9 @@ jobs:
           echo "https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com" > ~/.git-credentials
           git config --global user.name $user_name
           git config --global user.email $user_email
+        env:
+          user_name: "ArielMAJ"
+          user_email: "ariel.maj@hotmail.comm"
       - name: deploy to gh-pages
         run: |
           yarn
