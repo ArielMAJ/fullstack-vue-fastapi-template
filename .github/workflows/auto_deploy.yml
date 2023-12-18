@@ -1,0 +1,34 @@
+name: deploy
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "vue-front/**"
+      - ".github/workflows/auto_deploy.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19.x
+          cache: "yarn"
+          cache-dependency-path: ./vue-front/yarn.lock
+
+      - name: setup git auth
+        run: |
+          git config --global credential.helper store
+          echo "https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com" > ~/.git-credentials
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+      - name: deploy to gh-pages
+        run: |
+          yarn
+          NODE_ENV=production yarn run build
+          cd dist
+          git init
+          git add -A
+          git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
+          git push -f "https://github.com/${{ github.repository }}.git" main:gh-pages

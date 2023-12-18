@@ -18,8 +18,10 @@ export default {
   methods: {
     async fetchData() {
       try {
-        // Replace 'http://localhost:3000' with your actual backend API endpoint
-        const response = await fetch("http://localhost:3000");
+        // Replace 'https://front-back-integration-template-arielmaj.vercel.app/' with your actual backend API endpoint
+        const response = await fetch(
+          "https://front-back-integration-template-arielmaj.vercel.app/"
+        );
         const data = await response.json();
         this.message = data.message;
       } catch (error) {
