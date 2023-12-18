@@ -35,4 +35,4 @@ jobs:
           git init
           git add -A
           git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
-          git push -f "https://github.com/${{ github.repository }}.git" main:gh-pages
+          git push -f "https://github.com/${{ github.repository }}.git" master:gh-pages
