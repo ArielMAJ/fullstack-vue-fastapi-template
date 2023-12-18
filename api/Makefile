@@ -19,8 +19,8 @@ pre-commit:
 
 patch:
 	poetry version patch
-	git add pyproject.toml
+	git add pyproject.toml requirements.txt
 
 minor:
 	poetry version minor
-	git add pyproject.toml
+	git add pyproject.toml requirements.txt

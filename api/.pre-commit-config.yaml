@@ -8,6 +8,16 @@ repos:
         args: [--directory=api]
       - id: poetry-install
         args: [--directory=api]
+      - id: poetry-export
+        args:
+          [
+            --directory=api,
+            --without-hashes,
+            -o,
+            requirements.txt,
+            -f,
+            requirements.txt,
+          ]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
