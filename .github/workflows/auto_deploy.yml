@@ -28,6 +28,7 @@ jobs:
           user_email: "ariel.maj@hotmail.comm"
       - name: deploy to gh-pages
         run: |
+          cd vue-front
           yarn
           NODE_ENV=production yarn run build
           cd dist
