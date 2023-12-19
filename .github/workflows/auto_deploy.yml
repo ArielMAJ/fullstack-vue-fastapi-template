@@ -47,11 +47,6 @@ jobs:
           echo var:
           echo ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
           echo $endpoint_path
-          echo $endpoint_path_two
-          
-          echo ${{ vars.TESTE }}
-          echo ${{ vars.TESTE2 }}
-          echo ${{ vars.TESTE3 }}
           echo "*************"
           NODE_ENV=production VUE_APP_BACKEND_ROOT_ENDPOINT=$endpoint_path yarn run build
           mv dist/* tmp
