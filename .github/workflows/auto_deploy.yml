@@ -6,7 +6,7 @@ on:
       - "vue-front/**"
       - ".github/workflows/auto_deploy.yml"
 env:
-  endpoint_path: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
+  VUE_APP_BACKEND_ROOT_ENDPOINT: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
 
 jobs:
   deploy:
@@ -41,14 +41,7 @@ jobs:
           find . -maxdepth 1 -type f ! -name "CNAME" -exec rm -v {} \;
           find . -maxdepth 1 -type d ! -name ".git" -exec rm -rv {} \;
           cd ..
-
-          echo "*************"
-          
-          echo var:
-          echo ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
-          echo $endpoint_path
-          echo "*************"
-          NODE_ENV=production VUE_APP_BACKEND_ROOT_ENDPOINT=$endpoint_path yarn run build
+          NODE_ENV=production VUE_APP_BACKEND_ROOT_ENDPOINT=$VUE_APP_BACKEND_ROOT_ENDPOINT yarn run build
           mv dist/* tmp
           cd tmp
           git add -A
