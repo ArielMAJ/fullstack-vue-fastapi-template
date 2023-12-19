@@ -1,6 +1,10 @@
 <template>
-  <div>
+  <div id="content">
     <p>{{ message }}</p>
+    <p>Random Number: {{ formattedRandomNumber }}</p>
+    <button @click="fetchRandomNumber" class="button">
+      Update Random Number
+    </button>
   </div>
 </template>
 
@@ -10,20 +14,38 @@ export default {
   data() {
     return {
       message: "",
+      randomNumber: null,
     };
   },
+  computed: {
+    formattedRandomNumber() {
+      // Ensure randomNumber is a string and padStart with zeros to make it 4 digits
+      return String(this.randomNumber).padStart(5, "0");
+    },
+  },
   mounted() {
-    this.fetchData();
+    this.fetchMessage();
+    this.fetchRandomNumber();
   },
   methods: {
-    async fetchData() {
+    async fetchMessage() {
+      try {
+        // Replace 'https://front-back-integration-template-arielmaj.vercel.app/' with your actual backend API endpoint
+        const response = await fetch(process.env.VUE_APP_BACKEND_ROOT_ENDPOINT);
+        const data = await response.json();
+        this.message = data.message;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async fetchRandomNumber() {
       try {
         // Replace 'https://front-back-integration-template-arielmaj.vercel.app/' with your actual backend API endpoint
         const response = await fetch(
-          "https://front-back-integration-template-arielmaj.vercel.app/"
+          process.env.VUE_APP_BACKEND_ROOT_ENDPOINT + "random"
         );
         const data = await response.json();
-        this.message = data.message;
+        this.randomNumber = data.message.toFixed(2);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -32,6 +54,44 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* Add your scoped styles here */
+#content {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 10%;
+  padding: 10px;
+  width: fit-content;
+  min-width: 400px;
+  min-height: 100px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 3px double #4caf50;
+  transition-duration: 0.4s;
+  background-color: #c1eec2;
+  color: black;
+
+  &:hover {
+    color: white;
+    background-color: #4caf50;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
 </style>
