@@ -3,7 +3,6 @@ ifneq ("$(wildcard .env)","")
 	export
 endif
 
-API_DIR = api
 
 up-api:
 	poetry run python -m src.main
