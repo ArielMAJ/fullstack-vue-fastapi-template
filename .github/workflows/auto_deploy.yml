@@ -40,8 +40,8 @@ jobs:
           find . -maxdepth 1 -type d ! -name ".git" -exec rm -rv {} \;
           cd ..
           NODE_ENV=production yarn run build
-          mv dist tmp
+          mv dist/* tmp
           cd tmp
           git add -A
           git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
-          git push "https://github.com/${{ github.repository }}.git" origin gh-pages
+          git push origin gh-pages
