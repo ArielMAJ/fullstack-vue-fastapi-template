@@ -1,3 +1,4 @@
+import asyncio
 from random import random
 
 import uvicorn
@@ -19,12 +20,15 @@ app.add_middleware(
 
 @app.get("/", response_model=RootResponse)
 async def root():
+    await asyncio.sleep(random() * 7)
     return {"message": "Hello World message from the back-end!"}
 
 
 @app.get("/random", response_model=RandomResponse)
 async def random_number():
-    return {"message": round(random() * 100, 2)}
+    seconds = random() * 5
+    await asyncio.sleep(seconds)
+    return {"message": round(seconds, 2)}
 
 
 if __name__ == "__main__":

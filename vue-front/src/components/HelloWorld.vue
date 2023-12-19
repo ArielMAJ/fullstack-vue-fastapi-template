@@ -1,8 +1,14 @@
 <template>
   <div id="content">
-    <p>{{ message }}</p>
-    <p>Random Number: {{ formattedRandomNumber }}</p>
-    <button @click="fetchRandomNumber" class="button">
+    <p v-if="loadingMessage">Loading message...</p>
+    <p v-else>{{ message }}</p>
+    <p v-if="loadingRandomNumber">Loading random number...</p>
+    <p v-else>Random Number: {{ formattedRandomNumber }}</p>
+    <button
+      @click="fetchRandomNumber"
+      class="button"
+      :disabled="loadingRandomNumber"
+    >
       Update Random Number
     </button>
   </div>
@@ -15,11 +21,12 @@ export default {
     return {
       message: "",
       randomNumber: null,
+      loadingMessage: true,
+      loadingRandomNumber: true,
     };
   },
   computed: {
     formattedRandomNumber() {
-      // Ensure randomNumber is a string and padStart with zeros to make it 4 digits
       return String(this.randomNumber).padStart(5, "0");
     },
   },
@@ -30,22 +37,24 @@ export default {
   methods: {
     async fetchMessage() {
       try {
-        // Replace 'https://front-back-integration-template-arielmaj.vercel.app/' with your actual backend API endpoint
+        this.loadingMessage = true;
         const response = await fetch(process.env.VUE_APP_BACKEND_ROOT_ENDPOINT);
         const data = await response.json();
         this.message = data.message;
+        this.loadingMessage = false;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     },
     async fetchRandomNumber() {
       try {
-        // Replace 'https://front-back-integration-template-arielmaj.vercel.app/' with your actual backend API endpoint
+        this.loadingRandomNumber = true;
         const response = await fetch(
           process.env.VUE_APP_BACKEND_ROOT_ENDPOINT + "random"
         );
         const data = await response.json();
         this.randomNumber = data.message.toFixed(2);
+        this.loadingRandomNumber = false;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -92,6 +101,13 @@ export default {
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+    border-color: #aaa;
+    color: #888;
   }
 }
 </style>
