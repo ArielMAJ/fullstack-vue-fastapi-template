@@ -20,7 +20,7 @@ export default {
   computed: {
     formattedRandomNumber() {
       // Ensure randomNumber is a string and padStart with zeros to make it 4 digits
-      return String(this.randomNumber).padStart(5, "0");
+      return String(this.randomNumber).padStart(6, "0");
     },
   },
   mounted() {
