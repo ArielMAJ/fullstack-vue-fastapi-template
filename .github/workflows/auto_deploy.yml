@@ -30,15 +30,17 @@ jobs:
         run: |
           cd vue-front
           yarn
-          mkdir dist
-          cd dist
+          mkdir tmp
+          cd tmp
           git init
           git remote add origin "https://github.com/${{ github.repository }}.git"
           git fetch origin gh-pages
           git checkout gh-pages
+          rm -r -v !("CNAME")
           cd ..
           NODE_ENV=production yarn run build
-          cd dist
+          mv dist tmp
+          cd tmp
           git add -A
           git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
           git push "https://github.com/${{ github.repository }}.git" origin gh-pages
