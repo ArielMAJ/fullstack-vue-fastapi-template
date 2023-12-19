@@ -10,5 +10,10 @@
       "src": "/(.*)",
       "dest": "/src/main.py"
     }
-  ]
+  ],
+   "git": {
+    "deploymentEnabled": {
+      "gh-pages": false
+    }
+  }
 }
