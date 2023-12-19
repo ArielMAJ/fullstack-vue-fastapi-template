@@ -43,10 +43,10 @@ jobs:
           echo "*************"
           
           echo var:
-          echo ${{ env.VUE_APP_BACKEND_ROOT_ENDPOINT }}
+          echo ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
           
           echo "*************"
-          NODE_ENV=production VUE_APP_BACKEND_ROOT_ENDPOINT=${{ env.VUE_APP_BACKEND_ROOT_ENDPOINT }} yarn run build
+          NODE_ENV=production VUE_APP_BACKEND_ROOT_ENDPOINT=${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }} yarn run build
           mv dist/* tmp
           cd tmp
           git add -A
