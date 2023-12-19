@@ -45,4 +45,3 @@ jobs:
           git add -A
           git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
           git push origin gh-pages
-
