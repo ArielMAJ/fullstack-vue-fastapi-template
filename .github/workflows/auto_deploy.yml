@@ -7,6 +7,7 @@ on:
       - ".github/workflows/auto_deploy.yml"
 env:
   VUE_APP_BACKEND_ROOT_ENDPOINT: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
+  NODE_ENV: production
 
 jobs:
   deploy:
@@ -41,11 +42,9 @@ jobs:
           find . -maxdepth 1 -type f ! -name "CNAME" -exec rm -v {} \;
           find . -maxdepth 1 -type d ! -name ".git" -exec rm -rv {} \;
           cd ..
-          NODE_ENV=production yarn run build
+          yarn run build
           mv dist/* tmp
           cd tmp
           git add -A
-          git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
+          git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}" -n
           git push origin gh-pages
-        env:
-          endpoint_path_two: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
