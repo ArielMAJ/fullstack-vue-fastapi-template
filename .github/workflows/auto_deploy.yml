@@ -5,6 +5,8 @@ on:
     paths:
       - "vue-front/**"
       - ".github/workflows/auto_deploy.yml"
+env:
+  VUE_APP_BACKEND_ROOT_ENDPOINT: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
 
 jobs:
   deploy:
@@ -30,9 +32,20 @@ jobs:
         run: |
           cd vue-front
           yarn
-          NODE_ENV=production yarn run build
-          cd dist
+          mkdir tmp
+          cd tmp
           git init
+          git remote add origin "https://github.com/${{ github.repository }}.git"
+          git fetch origin gh-pages
+          git checkout gh-pages
+          find . -maxdepth 1 -type f ! -name "CNAME" -exec rm -v {} \;
+          find . -maxdepth 1 -type d ! -name ".git" -exec rm -rv {} \;
+          cd ..
+          NODE_ENV=production yarn run build
+          mv dist/* tmp
+          cd tmp
           git add -A
           git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
-          git push -f "https://github.com/${{ github.repository }}.git" master:gh-pages
+          git push origin gh-pages
+        env:
+          endpoint_path_two: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
