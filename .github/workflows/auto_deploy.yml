@@ -40,12 +40,12 @@ jobs:
           find . -maxdepth 1 -type d ! -name ".git" -exec rm -rv {} \;
           cd ..
 
-          echo *************
+          echo "*************"
           
           echo var:
           echo $VUE_APP_BACKEND_ROOT_ENDPOINT
           
-          echo *************
+          echo "*************"
           NODE_ENV=production VUE_APP_BACKEND_ROOT_ENDPOINT=$VUE_APP_BACKEND_ROOT_ENDPOINT yarn run build
           mv dist/* tmp
           cd tmp
