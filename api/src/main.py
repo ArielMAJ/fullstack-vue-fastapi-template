@@ -4,6 +4,7 @@ from random import random
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from loguru import logger
 from src.config import Config
 from src.schemas.random_response import RandomResponse
 from src.schemas.root_response import RootResponse
@@ -27,6 +28,7 @@ async def root():
 @app.get("/random", response_model=RandomResponse)
 async def random_number():
     seconds = random() * 5
+    logger.debug(f"Sleeping for {seconds} seconds before answering request.")
     await asyncio.sleep(seconds)
     return {"message": round(seconds, 2)}
 

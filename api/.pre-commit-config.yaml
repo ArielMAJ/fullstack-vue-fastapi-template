@@ -14,7 +14,7 @@ repos:
             --directory=api,
             --without-hashes,
             -o,
-            requirements.txt,
+            api/requirements.txt,
             -f,
             requirements.txt,
           ]
