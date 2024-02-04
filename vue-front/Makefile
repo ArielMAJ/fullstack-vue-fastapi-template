@@ -1,16 +1,11 @@
-up-vue:
-	yarn serve
+run:
+	bun serve
 
 install:
-	yarn install
+	bun install
 
 patch:
-	yarn version --patch
-	make untag
+	npm version patch
 
 minor:
-	yarn version --minor
-	make untag
-
-untag:
-	git tag -d $(shell git describe --tags --abbrev=0)
+	npm version minor

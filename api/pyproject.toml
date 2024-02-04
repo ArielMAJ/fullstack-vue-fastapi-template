@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "api"
+name = "fastapi-backend-template"
 version = "0.1.4"
-description = ""
+description = "A FastAPI backend template."
 authors = ["ArielMAJ <ariel.maj@hotmail.com>"]
 readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
