@@ -13,12 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 19.x
-          cache: "yarn"
-          cache-dependency-path: ./vue-front/yarn.lock
-
+          bun-version: 1.0.26
       - name: setup git auth
         run: |
           git config --global credential.helper store
@@ -31,7 +28,7 @@ jobs:
       - name: deploy to gh-pages
         run: |
           cd vue-front
-          yarn
+          bun install
           mkdir tmp
           cd tmp
           git init
@@ -41,7 +38,7 @@ jobs:
           find . -maxdepth 1 -type f ! -name "CNAME" -exec rm -v {} \;
           find . -maxdepth 1 -type d ! -name ".git" -exec rm -rv {} \;
           cd ..
-          NODE_ENV=production yarn run build
+          bun run build
           mv dist/* tmp
           cd tmp
           if [[ ! $(git status --porcelain) ]]; then
