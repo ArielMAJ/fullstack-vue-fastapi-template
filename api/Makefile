@@ -4,7 +4,7 @@ ifneq ("$(wildcard .env)","")
 endif
 
 
-up-api:
+run:
 	poetry run python -m src.main
 
 install:
@@ -18,8 +18,6 @@ pre-commit:
 
 patch:
 	poetry version patch
-	git add pyproject.toml requirements.txt
 
 minor:
 	poetry version minor
-	git add pyproject.toml requirements.txt

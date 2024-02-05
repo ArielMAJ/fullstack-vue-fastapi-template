@@ -9,11 +9,11 @@ VUE_FRONT_DIR = vue-front
 MAKE_API = $(MAKE) -C $(API_DIR)
 MAKE_VUE_FRONT = $(MAKE) -C $(VUE_FRONT_DIR)
 
-up-api:
-	$(MAKE_API) up-api
+run-api:
+	$(MAKE_API) run
 
-up-vue:
-	$(MAKE_VUE_FRONT) up-vue
+run-vue:
+	$(MAKE_VUE_FRONT) run
 
 install:
 	$(MAKE_API) install
@@ -29,3 +29,7 @@ patch: pre-commit
 minor: pre-commit
 	$(MAKE_API) minor
 	$(MAKE_VUE_FRONT) minor
+
+default-dot-envs:
+	cp ./vue-front/.env.example ./vue-front/.env
+	cp ./api/.env.example ./api/.env
