@@ -1,29 +1,29 @@
-# docs
+# vue-front-end-template
+
+A Vue front-end template for a head start on new projects.
+
+See `Makefile` for examples on how to run the project.
 
 ## Project setup
 
 ```
-yarn install
+bun install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
-yarn serve
+bun serve
 ```
 
 ### Compiles and minifies for production
 
 ```
-yarn build
+bun run build
 ```
 
 ### Lints and fixes files
 
 ```
-yarn lint
+bun lint
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
