@@ -14,8 +14,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "HelloWorld",
   data() {
     return {
@@ -38,7 +40,9 @@ export default {
     async fetchMessage() {
       try {
         this.loadingMessage = true;
-        const response = await fetch(process.env.VUE_APP_BACKEND_ROOT_ENDPOINT);
+        const response = await fetch(
+          import.meta.env.VITE_APP_BACKEND_ROOT_ENDPOINT
+        );
         const data = await response.json();
         this.message = data.message;
         this.loadingMessage = false;
@@ -50,7 +54,7 @@ export default {
       try {
         this.loadingRandomNumber = true;
         const response = await fetch(
-          process.env.VUE_APP_BACKEND_ROOT_ENDPOINT + "random"
+          import.meta.env.VITE_APP_BACKEND_ROOT_ENDPOINT + "random"
         );
         const data = await response.json();
         this.randomNumber = data.message.toFixed(2);
@@ -60,7 +64,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

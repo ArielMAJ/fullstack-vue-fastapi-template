@@ -6,7 +6,7 @@ on:
       - "vue-front/**"
       - ".github/workflows/auto_deploy.yml"
 env:
-  VUE_APP_BACKEND_ROOT_ENDPOINT: ${{ vars.VUE_APP_BACKEND_ROOT_ENDPOINT }}
+  VITE_APP_BACKEND_ROOT_ENDPOINT: ${{ vars.VITE_APP_BACKEND_ROOT_ENDPOINT }}
 
 jobs:
   deploy:
