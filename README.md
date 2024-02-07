@@ -77,7 +77,7 @@ Everytime you push to the `main` branch, the action will run and deploy the fron
     - You can generate a token [here](https://github.com/settings/tokens) and give it the `repo` scope;
       ![repo scope image](./docs/images/repo-scope-image.png)
     - This is needed for the `gh-pages` deployment (so the action can push to the `gh-pages` branch);
-2.  Repository variable `VUE_APP_BACKEND_ROOT_ENDPOINT` (access the equivalent of `https://github.com/ArielMAJ/fullstack-vue-fastapi-template/settings/variables/actions` for your repository);
+2.  Repository variable `VITE_APP_BACKEND_ROOT_ENDPOINT` (access the equivalent of `https://github.com/ArielMAJ/fullstack-vue-fastapi-template/settings/variables/actions` for your repository);
     ![GitHub variables image](./docs/images/github-variables.png)
     - Set the value to the root endpoint of your backend (e.g. `https://front-back-integration-template-arielmaj.vercel.app/`);
     - This is needed for the frontend to know where the backend is located, this way you can easily change the backend location without changing the code (e.g. development will point to `http://localhost:3000/` and production will point to the PROD backend);

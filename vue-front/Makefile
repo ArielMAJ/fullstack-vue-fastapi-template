@@ -1,5 +1,5 @@
 run:
-	bun serve
+	bun dev
 
 install:
 	bun install
