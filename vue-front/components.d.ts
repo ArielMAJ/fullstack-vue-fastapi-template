@@ -7,7 +7,15 @@ export {}
 
 declare module "vue" {
   export interface GlobalComponents {
+    copy: typeof import("./src/components/loaders/Roller copy.vue")["default"];
+    Dots: typeof import("./src/components/loaders/Dots.vue")["default"];
+    Dots2: typeof import("./src/components/loaders/Dots2.vue")["default"];
+    DualRing: typeof import("./src/components/loaders/DualRing.vue")["default"];
+    Ellipsis: typeof import("./src/components/loaders/Ellipsis.vue")["default"];
+    Ellipsis2: typeof import("./src/components/loaders/Ellipsis2.vue")["default"];
     HelloWorld: typeof import("./src/components/HelloWorld.vue")["default"];
+    Ring: typeof import("./src/components/loaders/Ring.vue")["default"];
+    Roller: typeof import("./src/components/loaders/Roller.vue")["default"];
     RouterLink: typeof import("vue-router")["RouterLink"];
     RouterView: typeof import("vue-router")["RouterView"];
   }
