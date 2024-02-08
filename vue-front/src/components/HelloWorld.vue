@@ -1,8 +1,8 @@
 <template>
   <div id="content">
-    <p v-if="loadingMessage">Loading message...</p>
+    <Ellipsis2 v-if="loadingMessage" />
     <p v-else>{{ message }}</p>
-    <p v-if="loadingRandomNumber">Loading random number...</p>
+    <Ellipsis v-if="loadingRandomNumber" />
     <p v-else>Random Number: {{ formattedRandomNumber }}</p>
     <button
       @click="fetchRandomNumber"
@@ -16,9 +16,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Ellipsis from "@/components/loaders/Ellipsis.vue";
+import Ellipsis2 from "@/components/loaders/Ellipsis2.vue";
 
 export default defineComponent({
   name: "HelloWorld",
+  components: {
+    Ellipsis,
+    Ellipsis2,
+  },
   data() {
     return {
       message: "",
