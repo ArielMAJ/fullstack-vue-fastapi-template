@@ -34,10 +34,10 @@ A head start template for fullstack projects with integrated Vue front-end (bun/
 ## How to run the project
 
 1. Clone the repository with:
-   1. `git clone git@github.com:ArielMAJ/front-back-integration-template.git` (needs SSH key setup); or
-   2. `git clone https://github.com/ArielMAJ/front-back-integration-template.git` (no need for SSH key setup);
+   1. `git clone git@github.com:ArielMAJ/fullstack-vue-fastapi-template.git` (needs SSH key setup); or
+   2. `git clone https://github.com/ArielMAJ/fullstack-vue-fastapi-template.git` (no need for SSH key setup);
    3. Download it if you don't have git and doesn't want to install it;
-2. Change directory: `cd front-back-integration-template`;
+2. Change directory: `cd fullstack-vue-fastapi-template`;
 3. Create `.env`'s from the `.env.example` files (you can just copy them as they are):
    ```bash
    make default-dot-envs
@@ -78,8 +78,8 @@ Everytime you push to the `main` branch, the action will run and deploy the fron
       ![repo scope image](./docs/images/repo-scope-image.png)
     - This is needed for the `gh-pages` deployment (so the action can push to the `gh-pages` branch);
 2.  Repository variable `VITE_APP_BACKEND_ROOT_ENDPOINT` (access the equivalent of `https://github.com/ArielMAJ/fullstack-vue-fastapi-template/settings/variables/actions` for your repository);
-    ![GitHub variables image](./docs/images/github-variables.png)
-    - Set the value to the root endpoint of your backend (e.g. `https://front-back-integration-template-arielmaj.vercel.app/`);
+    ![image](https://github.com/ArielMAJ/fullstack-vue-fastapi-template/assets/69123486/2b997bf8-1a79-4c6e-8596-55feb663f9b6)
+    - Set the value to the root endpoint of your backend (e.g. `https://fullstack-vue-fastapi-template.vercel.app/`);
     - This is needed for the frontend to know where the backend is located, this way you can easily change the backend location without changing the code (e.g. development will point to `http://localhost:3000/` and production will point to the PROD backend);
 
 ### Backend
