@@ -8,7 +8,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "^0.105.0"
+fastapi = "^0.109.1"
 uvicorn = "^0.24.0.post1"
 loguru = "^0.7.2"
 
