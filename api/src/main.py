@@ -33,5 +33,10 @@ async def random_number():
     return {"message": round(seconds, 2)}
 
 
+@app.get("/health")
+def health():
+    return {"status": "alive"}
+
+
 if __name__ == "__main__":
-    uvicorn.run("src.main:app", host=Config.HOST, port=Config.PORT, reload=True)
+    uvicorn.run("src.main:app", port=Config.PORT, reload=False)

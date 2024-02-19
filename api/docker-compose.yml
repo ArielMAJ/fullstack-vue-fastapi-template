@@ -1,0 +1,5 @@
+services:
+  front-back-integration-template:
+    build: .
+    ports:
+      - "3000:3000"
