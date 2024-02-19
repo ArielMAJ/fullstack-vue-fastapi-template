@@ -47,7 +47,7 @@ export default defineComponent({
       try {
         this.loadingMessage = true;
         const response = await fetch(
-          import.meta.env.VITE_APP_BACKEND_ROOT_ENDPOINT
+          import.meta.env.VITE_APP_BACKEND_ROOT_ENDPOINT + "v1/"
         );
         const data = await response.json();
         this.message = data.message;
@@ -60,7 +60,7 @@ export default defineComponent({
       try {
         this.loadingRandomNumber = true;
         const response = await fetch(
-          import.meta.env.VITE_APP_BACKEND_ROOT_ENDPOINT + "random"
+          import.meta.env.VITE_APP_BACKEND_ROOT_ENDPOINT + "v1/random_number/"
         );
         const data = await response.json();
         this.randomNumber = data.message.toFixed(2);
