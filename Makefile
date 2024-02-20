@@ -3,8 +3,8 @@ ifneq ("$(wildcard .env)","")
 	export
 endif
 
-API_DIR = api
-VUE_FRONT_DIR = vue-front
+API_DIR = backend
+VUE_FRONT_DIR = frontend
 
 MAKE_API = $(MAKE) -C $(API_DIR)
 MAKE_VUE_FRONT = $(MAKE) -C $(VUE_FRONT_DIR)
@@ -31,5 +31,5 @@ minor: pre-commit
 	$(MAKE_VUE_FRONT) minor
 
 default-dot-envs:
-	cp ./vue-front/.env.example ./vue-front/.env
-	cp ./api/.env.example ./api/.env
+	cp ./$(VUE_FRONT_DIR)/.env.example ./$(VUE_FRONT_DIR)/.env.local
+	cp ./$(API_DIR)/.env.example ./$(API_DIR)/.env

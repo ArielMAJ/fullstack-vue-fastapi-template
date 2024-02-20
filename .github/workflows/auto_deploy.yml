@@ -3,7 +3,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "vue-front/**"
+      - "frontend/**"
       - ".github/workflows/auto_deploy.yml"
 env:
   VITE_APP_BACKEND_ROOT_ENDPOINT: ${{ vars.VITE_APP_BACKEND_ROOT_ENDPOINT }}
@@ -27,7 +27,7 @@ jobs:
           user_email: "ariel.maj@hotmail.comm"
       - name: deploy to gh-pages
         run: |
-          cd vue-front
+          cd frontend
           bun install
           mkdir tmp
           cd tmp
