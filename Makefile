@@ -31,5 +31,5 @@ minor: pre-commit
 	$(MAKE_VUE_FRONT) minor
 
 default-dot-envs:
-	cp ./vue-front/.env.example ./vue-front/.env
-	cp ./api/.env.example ./api/.env
+	cp ./$(VUE_FRONT_DIR)/.env.example ./$(VUE_FRONT_DIR)/.env.local
+	cp ./$(API_DIR)/.env.example ./$(API_DIR)/.env
