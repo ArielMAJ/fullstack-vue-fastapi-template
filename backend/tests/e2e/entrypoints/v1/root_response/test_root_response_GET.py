@@ -2,13 +2,16 @@
 
 import pytest
 
-@pytest.mark.parametrize("random_return_value", [0.1, 0.2, 0.3])  # Specify different sleep times here
+
+@pytest.mark.parametrize(
+    "random_return_value", [0.1, 0.2, 0.3]
+)  # Specify different sleep times here
 def test_root_response_GET(client, mocker, random_return_value):
     """Test the endpoint."""
     mock_sleep = mocker.patch("asyncio.sleep")
     mock_sleep.side_effect = lambda *args, **kwargs: None
 
-    mock_random = mocker.patch("random.random")
+    mock_random = mocker.patch("api.services.root_response_service.random")
     mock_random.return_value = random_return_value
 
     response = client.get("/v1/")

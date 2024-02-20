@@ -1,5 +1,6 @@
 """End-to-end test for the health endpoint."""
 
+
 def test_health(client):
     """Test the health endpoint."""
     response = client.get("/health")

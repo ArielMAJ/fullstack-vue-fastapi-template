@@ -4,7 +4,7 @@ router = APIRouter()
 
 
 @router.get("/health")
-def health_check() -> None:
+def health() -> None:
     """
     Checks the health of the project.
 
