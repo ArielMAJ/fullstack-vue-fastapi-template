@@ -3,8 +3,8 @@ ifneq ("$(wildcard .env)","")
 	export
 endif
 
-API_DIR = api
-VUE_FRONT_DIR = vue-front
+API_DIR = backend
+VUE_FRONT_DIR = frontend
 
 MAKE_API = $(MAKE) -C $(API_DIR)
 MAKE_VUE_FRONT = $(MAKE) -C $(VUE_FRONT_DIR)
