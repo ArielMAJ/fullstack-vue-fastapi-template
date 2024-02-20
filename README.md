@@ -84,12 +84,12 @@ Everytime you push to the `main` branch, the action will run and deploy the fron
 
 ### Backend
 
-I personally recommend Vercel for the backend, as it is the easiest to set up and use and it's free for personal projects. The [vercel.json](./vercel.json) file is already set up for this, but you're gonna need to change the root directory to your api directory in Vercel:
+I personally recommend Vercel for the backend, as it is the easiest to set up and use and it's free for personal projects. The [vercel.json](./vercel.json) file is already set up for this, but you're gonna need to change the root directory to your backend directory in Vercel:
 ![API root folder image](./docs/images/api-root-folder.png)
 
 Make sure to add any environment variables you create for your API in the Environment Variables section of the Vercel Project Settings.
 
-Obs.: The backend packages are locally managed with `poetry`, but, for simplicity in Vercel deployment, the `requirements.txt` file is present in the folder as well. You can generate the `requirements.txt` file with the command `poetry export -f requirements.txt --output requirements.txt --without-hashes` in the `api` directory. If you use the pre-commit hook, it will automatically generate the `requirements.txt` file for you when you commit.
+Obs.: The backend packages are locally managed with `poetry`, but, for simplicity in Vercel deployment, the `requirements.txt` file is present in the folder as well. You can generate the `requirements.txt` file with the command `poetry export -f requirements.txt --output requirements.txt --without-hashes` in the `backend` directory. If you use the pre-commit hook, it will automatically generate the `requirements.txt` file for you when you commit.
 
 ## Compatibility
 
