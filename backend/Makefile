@@ -8,7 +8,7 @@ run:
 	poetry run python -m api
 
 test:
-	poetry run pytest --cov
+	ENVIRONMENT=test poetry run pytest --cov
 
 install:
 	pip install poetry

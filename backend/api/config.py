@@ -24,7 +24,7 @@ class Config:
 class TestConfig(Config):
     """Test configuration."""
 
-    ENVIRONMENT = "TEST"
+    ENVIRONMENT = "test"
     TESTING = True
     DEBUG = False
     PRESERVE_CONTEXT_ON_EXCEPTION = False
