@@ -1,8 +1,11 @@
 from pathlib import Path
-from fastapi.responses import JSONResponse
+
+from api.entrypoints.router import api_router
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.entrypoints.router import api_router
+from fastapi.responses import JSONResponse
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.inmemory import InMemoryBackend
 
 APP_ROOT = Path(__file__).parent
 
@@ -29,4 +32,5 @@ def get_app() -> FastAPI:
     )
     _app.include_router(router=api_router)
 
+    FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
     return _app
