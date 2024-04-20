@@ -1,6 +1,6 @@
 {
   "name": "vuetify-frontend-template",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--no-warnings' vite",
     "build": "vite build",
