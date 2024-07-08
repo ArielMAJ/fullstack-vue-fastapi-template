@@ -95,7 +95,7 @@ Obs.: The backend packages are locally managed with `poetry`, but, for simplicit
 
 - Linux: works and is the primary development platform;
 - WSL: should work;
-- Windows: should work. The inital development stages were in Windows, but later migrated to Linux;
+- Windows: should work. The initial development stages were in Windows, but later Linux only;
 - MacOS: not tested.
 
 ## Contributing
