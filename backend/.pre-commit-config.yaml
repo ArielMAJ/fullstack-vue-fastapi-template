@@ -8,6 +8,16 @@ repos:
         args: [--directory=backend]
       - id: poetry-install
         args: [--directory=backend]
+      - id: poetry-export
+        args:
+          [
+            "--directory=backend",
+            "--without-hashes",
+            "-o",
+            "backend/requirements.txt",
+            "-f",
+            "requirements.txt",
+          ]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
@@ -93,12 +103,3 @@ repos:
     rev: v0.1.8
     hooks:
       - id: ruff
-
-  - repo: local
-    hooks:
-      - id: export-requirements
-        name: Export requeriments.txt
-        language: system
-        pass_filenames: false
-        entry: poetry export --without-hashes -o requirements.txt -f requirements.txt
-        files: ^(pyproject\.toml|poetry\.lock)$
